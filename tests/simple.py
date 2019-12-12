@@ -1,5 +1,5 @@
-from llstep import step_data
-from llstep_test.step_extension import step_extension
+from safetydance import step_data
+from safetydance_test.step_extension import step_extension
 
 
 simple_value = step_data(int)
@@ -7,12 +7,12 @@ simple_result = step_data(int)
 
 
 @step_extension
-def value_is(self, desired_value):
+def value_is(self, desired_value: int):
     simple_value = desired_value
 
 
 @step_extension
-def result_is(self, expected_result):
+def result_is(self, expected_result: int):
     assert simple_result == expected_result
 
 
