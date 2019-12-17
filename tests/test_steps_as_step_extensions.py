@@ -1,12 +1,12 @@
 import pytest
-import steps
+import steps_as_step_extensions
 from safetydance import script
-from steps_as_step_extensions import initialize_test_value, validate_test_value
+from safetydance_test import Given, When, Then, And, scripted_test
 
 
-@script
+@scripted_test
 def test_steps_as_step_extensions():
-    initialize_test_value("foobar")
-    validate_test_value("foobar")
+    Given.initialize_test_value("foobar")
+    Then.validate_test_value("foobar")
     with pytest.raises(AssertionError):
-        validate_test_value("This should raise AssertionError!")
+        And.validate_test_value("This should raise AssertionError!")
