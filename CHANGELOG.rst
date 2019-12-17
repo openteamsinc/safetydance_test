@@ -4,6 +4,11 @@ safetydance_test Change Log
 
 .. current developments
 
+v0.1.0
+====================
+
+
+
 v0.0.1
 ====================
 
