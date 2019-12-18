@@ -1,6 +1,5 @@
 import pytest
 import steps_as_step_extensions
-from safetydance import script
 from safetydance_test import Given, When, Then, And, scripted_test
 
 
