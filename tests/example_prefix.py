@@ -11,11 +11,12 @@ class ExamplePrefix():
     ...
 
 
+_EXAMPLE = ExamplePrefix()
+
+
 @extension_property
 def example_prefix(self: TestStepPrefix):
-    ret = ExamplePrefix()
-    print(dir(ret))
-    return ret
+    return _EXAMPLE
 
 
 all_steps_as_step_extensions_from(steps, target_type=ExamplePrefix)
