@@ -1,7 +1,7 @@
 from safetydance_test import TestStepPrefix
 from safetydance_test.step_extension import all_steps_as_step_extensions_from, step_extension
-import steps as steps
 from type_extensions import extension_property
+import steps
 
 
 class ExamplePrefix():

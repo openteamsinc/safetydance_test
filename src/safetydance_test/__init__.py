@@ -27,6 +27,7 @@ And = step_data(TestStepPrefix)
 
 class ScriptedTest(Step):
     def __call__(self, *args, **kwargs):
+        __tracebackhide = True
         if self.f is None:
             self.rewrite()
         context = NestingContext()

@@ -42,6 +42,7 @@ class StepExtension(Extension):
 
 
     def __call__(self, extended_self, *args, **kwargs):
+        __tracebackhide__ = True
         call_step(self.f_step, *args, **kwargs)
 
 
