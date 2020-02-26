@@ -6,7 +6,7 @@ from ast import (
 )
 from importlib import import_module
 from inspect import getmembers
-from safetydance import step, step_decorator, Step
+from safetydance import step, step_decorator, ContextKey, Step
 from safetydance_test import TestStepPrefix
 from types import FunctionType
 from type_extensions import (
@@ -89,10 +89,11 @@ def all_steps_as_step_extensions_from(
     Wrap all steps in the ``source_module`` and add them to the calling module.
     """
     newmembers = dict()
-    for k, v in getmembers(
-            source_module,
-            lambda x: isinstance(x, Step) and not isinstance(x, StepExtension)):
-        newmembers[k] = as_step_extension(v, target_type)
+    for k, v in getmembers(source_module):
+        if isinstance(v, Step) and not isinstance(v, StepExtension):
+            newmembers[k] = as_step_extension(v, target_type)
+        elif isinstance(v, ContextKey):
+            newmembers[k] = v
     calling_frame = get_calling_frame(not_calling_frame=[__name__])
     calling_module = calling_frame.f_globals["__name__"]
     target_module = import_module(calling_module)
